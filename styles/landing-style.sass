@@ -1,3 +1,19 @@
+
+// LANDING PAGE STYLE
+//
+// Page in construction.
+//
+// Still missing media queries to go from mobile to desktop.
+// Sizes for now refer to the mobile version.
+// Thinking about removing the top register button in the mobile version and leaving just the log in button for clarity.
+
+
+for now only the top of the landing page was implemented
+
+
+
+
+
 body
   background-color: #0F68A1
   margin: 0
@@ -30,16 +46,20 @@ header
     padding: 8px
 
   .register
-    display: inline-block
-    font-family: helvetica
-    text-decoration: none
-    margin-left: 20px
-    background-color: #239DE4
-    padding: 8px
-    border-radius: 5px
-    margin-top: 35px
-    float: right
-    margin-right: 30px
+    a
+      display: inline-block
+      font-family: helvetica
+      text-decoration: none
+      margin-left: 20px
+      background-color: #239DE4
+      padding: 8px
+      border-radius: 5px
+      margin-top: 35px
+      float: right
+      margin-right: 30px
+      margin-bottom: 15px
+      box-shadow: 0 2px 5px rgba(0,0,0,0.30)
+
 
 
 // Top text alignment, center and padding.
@@ -49,7 +69,7 @@ header
   position: absolute
   justify-content: center
   width: 100%
-  top: 240px
+  top: 245px
 
   // Registration button creation
   a
