@@ -5,6 +5,8 @@
     <title>Landing</title>
     <link rel="stylesheet" href="styles/landing-style.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    </script>
   </head>
   <body>
     <!-- header with logo log in and register buttons -->
@@ -36,5 +38,84 @@
       </div>
     </div>
 
+    <div class="time-line-container">
+      <p>Verá todo sobre su proyecto con tan solo echar un vistazo al la linea, y todo se actualiza en tiempo real. No hay nada que configurar y todo el mundo lo obtiene al instante.</p>
+      <div class="nodoCompleto1">
+        <div class="contenedorNodo2">
+          <div class="boton">
+          </div>
+        </div>
+        <div class="contenedorNodo">
+          <div class="dinamicCircle"></div>
+        </div>
+      </div>
+      <img class="mockup-branch-line" src="images/mockup-branch-line.png" alt="branch">
+      <div class="line-down">
+        <div class="line-down-red">
+
+        </div>
+      </div>
+      <img class="mockup-line" src="images/mockup-line.png" alt="line">
+    </div>
+
+
+      <script src="http://d3js.org/d3.v3.min.js"></script>
+      <script>
+        var width = 350,
+            height = 350,
+            τ = 2 * Math.PI;
+
+        var arc = d3.svg.arc()
+            .innerRadius(100)
+            .outerRadius(135)
+            .startAngle(0);
+
+        var svg = d3.select(".dinamicCircle").append("svg")
+              .attr("width", width)
+              .attr("height", height)
+            .append("g")
+              .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+
+          var background = svg.append("path")
+              .datum({endAngle: τ})
+              .style("fill", "#E1EEEE")
+              .attr("d", arc);
+
+          var foreground = svg.append("path")
+            .datum({endAngle: 0 * τ})
+              .style("fill", "#FF6161")
+              .attr("d", arc);
+
+        setInterval(function() {
+          foreground.transition()
+              .duration(750)
+              .call(arcTween, 0.5 * τ);
+        }, 1500);
+
+          function arcTween(transition, newAngle) {
+
+            transition.attrTween("d", function(d) {
+
+              var interpolate = d3.interpolate(d.endAngle, newAngle);
+
+              return function(t) {
+
+                d.endAngle = interpolate(t);
+
+                return arc(d);
+              };
+            });
+        }
+      </script>
+
+
+    <!-- call to JQUERY -->
+    <script src="jquery-3.2.1.min.js"></script>
+
+    <!-- call to library for controlling GIF animation -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
+    <!-- call to controller script -->
+    <script type="text/javascript" src="javascript/animationControllerIndex.js">
   </body>
 </html>
