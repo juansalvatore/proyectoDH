@@ -1,12 +1,11 @@
 <?php
 //Constant variables
-define('DB_PATH', '../db/usuarios.json');
+define('DB_PATH', '../db/users.json');
 
 //Step 1 - Validate form
 //TODO - add deeper validations.
 
 //validate username
-
 $name = trim($_POST['username']);
 if (empty($name)) {
   echo "<p>Por favor, ingrese su nombre completo</p>";
@@ -38,7 +37,7 @@ var_dump($name_flag && $email_flag && $password_flag);
 
 //Step 2 - Create an username
 
-//execute this actions if all the flags are true 
+//execute this actions if all the flags are true
 if ($name_flag && $email_flag && $password_flag) {
   $user = [
     'username' => $name,
