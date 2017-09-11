@@ -53,7 +53,7 @@ table
 	border-spacing: 0
 
 
-/////////
+////////////////////////
 
 *
   box-sizing: border-box
@@ -62,7 +62,6 @@ body
   background-color: #0F68A1
   margin: 0
   box-sizing: border-box
-
 
 a
   text-decoration: none
@@ -118,23 +117,6 @@ header
   width: 100%
   top: 225px
 
-  // Registration button creation
-  a
-    background-color: #5DB348
-    padding: 10px
-    display: block
-    width: 200px
-    margin: 0 auto
-    margin-top: 20px
-    border-radius: 5px
-    text-align: center
-    color: white
-    text-decoration: none
-    font:
-      family: helvetica
-      weight: bold
-    box-shadow: 0 5px 10px rgba(0,0,0,0.30)
-
 
   h1
     font:
@@ -159,6 +141,23 @@ header
     line-height: 24px
     margin: 0 auto
     padding: 10px
+
+// Registration button creation
+.green-register
+  background-color: #5DB348
+  padding: 10px
+  display: block
+  width: 200px
+  margin: 0 auto
+  margin-top: 20px
+  border-radius: 5px
+  text-align: center
+  color: white
+  text-decoration: none
+  font:
+    family: helvetica
+    weight: bold
+  box-shadow: 0 5px 10px rgba(0,0,0,0.30)
 // FINISH: Top text alignment, center and padding.
 
 
@@ -194,25 +193,22 @@ header
     left: 50%;
     top: 90%;
     transform: translate(-50%,-50%);
+
 // FINISH: background circle and line building
 
 
 // MOCKUPS
-
 // Dinamic diagonal container
+
 .dinamic-diagonal-container
-  width: 100vw
+  width: 100%
   height: 1300px
   background-color: #229EE6
   position: relative
   z-index: 4
   top: 900px
-  box-shadow: o 2px 283px 1px rgba(0,0,0,0.18)
   overflow: hidden
 
-.mockups-container
-  position: relative
-  top: 200px
 
   .mockup-mac
     width: 350px
@@ -247,11 +243,11 @@ header
 
 .time-line-container
 	height: 3500px
-	width: 100vw
+	width: 100%
 	background-color: #1174B3
 	position: absolute
-	top: 2300px
-	z-index: -2
+	top: 2100px
+	z-index: 2
 	overflow: hidden
 
 .nodoCompleto1
@@ -266,18 +262,18 @@ header
 .dinamicCircle
 	position: absolute
 	top: 20px
-	left: 50%;
-	top: 25%;
-	transform: translate(-50%,-50%);
+	left: 50%
+	top: 25%
+	transform: translate(-50%,-50%)
 
 
 .contenedorNodo2
 	position: absolute
 	top: 90px
 	z-index: 10
-	left: 50%;
-	top: 25%;
-	transform: translate(-50%,-50%);
+	left: 50%
+	top: 24.99%
+	transform: translate(-50%,-50%)
 
 .boton
   width: 210px
@@ -295,47 +291,164 @@ header
   box-shadow: 0 0 10px 0
 
 .mockup-branch-line
-	position: relative
-	display: block
+	position: absolute
 	top: 970px
-	left: 80px
+	left: 50%
 	width: 200px
 	margin: 0 auto
 	z-index: -1
 
 .line-down
-	position: relative
+	position: absolute
 	display: block
 	width: 10px
-	height: 1000px
-	margin: 0 auto
+	height: 1090px
+	left: 50%
+	transform: translateX(-50%)
 	background-color: #E1EEEE
 	z-index: -1
-	top: 450px
+	top: 850px
 
 .line-down-red
 	position: absolute
 	display: block
 	width: 100%
-	height: 500px
+	height: 600px
 	background-color: #FF6161
 
 .mockup-line
-	position: relative
+	position: absolute
 	display: block
-	margin: 0 auto
-	top: 300px
+	left: 50%
+	transform: translateX(-50%)
+	top: 1860px
 	width: 300px
 
-.time-line-container p
+.time-line-container
 	padding: 20px
+	padding-top: 200px
 	display: inline-block
 	position: absolute
 	margin: 0 auto
-	color: #FFFFFF
 	font:
 		family: helvetica
 		size: 22px
 	line-height: 35px
 	text-align: center
-	margin-top: 230px
+	margin-top: 30px
+
+.time-line-container
+	p
+		max-width: 700px
+		color: #FFFFFF
+		margin-top: 150px
+		// center max width text
+		position: relative
+		left: 50%
+		transform: translateX(-50%)
+
+// END OF TIME LINE section
+
+// last section time line
+.last-section
+	background-color: #E7EEED
+	width: 100vw
+	height: 1500px
+	position: relative
+	top: 4200px
+
+	.container
+		padding-top: 300px
+		display: flex
+		flex-direction: column
+		justify-content: center
+		overflow: hidden
+
+		p
+			font:
+				family: helvetica
+				size: 21px
+			text-align: center
+			line-height: 28px
+			padding: 20px
+			color: #4D4D4D
+			max-width: 770px
+			// center max width text
+			position: relative
+			left: 50%
+			transform: translateX(-50%)
+
+		.nodo-last
+			display: block
+			position: relative
+			margin: 0 auto
+			width: 200px
+			margin-bottom: 160px
+			z-index: 2
+
+		.infinite-line
+			width: 100%
+			height: 10px
+			background-color: white
+			position: relative
+			bottom: 268px
+			margin-left: 50%
+			z-index: 1
+
+			.red-line
+				height: 100%
+				width: 300px
+				background-color: #FD6466
+
+		.mini-line
+			display: block
+			width: 300px
+			margin: 0 auto
+			margin-top: 200px
+
+// END: last section time line
+
+// footer
+footer
+	width: 100%
+	min-height: 530px
+	background-color: #F1F5F5
+	position: relative
+	top: 4050px
+	padding: 140px 15px 15px 15px
+
+	p
+		text-align: center
+		font:
+			size: 21px
+			family: helvetica
+		line-height: 32px
+		margin-bottom: 60px
+		color: #4D4D4D
+		max-width: 778px
+		// center max width text
+		position: relative
+		left: 50%
+		transform: translateX(-50%)
+
+	.green-register
+		margin-bottom: 100px
+
+// END OF: footer
+
+// Copyright section
+.end
+	width: 100%
+	height: 50px
+	background-color: white
+	position: relative
+	top: 4040px
+	padding: 20px
+
+	p
+		font:
+			family: helvetica
+			size: 10px
+		color: #373737
+
+// END OF: Copyright section

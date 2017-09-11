@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="styles/landing-style.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="http://d3js.org/d3.v3.min.js"></script>
-    </script>
   </head>
   <body>
     <!-- header with logo log in and register buttons -->
@@ -17,26 +16,33 @@
         <div class="register"><a href="#">REGISTER</a></div>
       </div>
     </header>
+    <!-- END OF: header with logo log in and register buttons -->
 
     <!-- landing's top -->
     <div class="topText">
       <h1>Boole es la manera gratuita y visual de organizar su proyecto.</h1>
       <p>Deje a un lado las hojas de cálculo sin actualizar, las notas rápidas y el software inadecuado para gestionar sus proyectos. Boole le deja ver todo sobre su proyecto de un solo vistazo.</p>
-      <a href="#">Regístrese. ¡Es gratis!</a>
+      <a class="green-register" href="#">Regístrese. ¡Es gratis!</a>
     </div>
+    <!--END OF: landing's top -->
+
     <!-- background circle with a line on the bottom  -->
     <div class="contenedorCirculo">
       <div class="circle"></div>
       <div class="line"></div>
     </div>
+    <!-- END OF: background circle with a line on the bottom  -->
 
+
+    <!-- mockups section -->
     <div class="dinamic-diagonal-container">
-      <div class="mockups-container">
         <img class="mockup-mac" src="images/mockup-macbookAir.png" alt="boole-macbook">
         <p class="mockup-text">Esta es nuestra linea de Boole. Es una linea para visualizar los tiempos de tu proyecto.</p>
         <img class="mockup-ipad" src="images/mockup-ipad.png" alt="boole-ipad">
-      </div>
     </div>
+    <!-- END OF: mockups section -->
+
+    <!-- time line width A3 node test -->
 
     <div class="time-line-container">
       <p>Verá todo sobre su proyecto con tan solo echar un vistazo al la linea, y todo se actualiza en tiempo real. No hay nada que configurar y todo el mundo lo obtiene al instante.</p>
@@ -51,63 +57,87 @@
       </div>
       <img class="mockup-branch-line" src="images/mockup-branch-line.png" alt="branch">
       <div class="line-down">
-        <div class="line-down-red">
-
-        </div>
+        <div class="line-down-red"></div>
       </div>
       <img class="mockup-line" src="images/mockup-line.png" alt="line">
     </div>
+    <!-- call to a3 and add of A3 pie chart -->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script>
+      var width = 350,
+          height = 350,
+          τ = 2 * Math.PI;
 
+      var arc = d3.svg.arc()
+          .innerRadius(100)
+          .outerRadius(135)
+          .startAngle(0);
 
-      <script src="http://d3js.org/d3.v3.min.js"></script>
-      <script>
-        var width = 350,
-            height = 350,
-            τ = 2 * Math.PI;
+      var svg = d3.select(".dinamicCircle").append("svg")
+            .attr("width", width)
+            .attr("height", height)
+          .append("g")
+            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
 
-        var arc = d3.svg.arc()
-            .innerRadius(100)
-            .outerRadius(135)
-            .startAngle(0);
+        var background = svg.append("path")
+            .datum({endAngle: τ})
+            .style("fill", "#E1EEEE")
+            .attr("d", arc);
 
-        var svg = d3.select(".dinamicCircle").append("svg")
-              .attr("width", width)
-              .attr("height", height)
-            .append("g")
-              .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+        var foreground = svg.append("path")
+          .datum({endAngle: 0 * τ})
+            .style("fill", "#FF6161")
+            .attr("d", arc);
 
-          var background = svg.append("path")
-              .datum({endAngle: τ})
-              .style("fill", "#E1EEEE")
-              .attr("d", arc);
+      setInterval(function() {
+        foreground.transition()
+            .duration(750)
+            .call(arcTween, 0.5 * τ);
+      }, 1500);
 
-          var foreground = svg.append("path")
-            .datum({endAngle: 0 * τ})
-              .style("fill", "#FF6161")
-              .attr("d", arc);
+        function arcTween(transition, newAngle) {
 
-        setInterval(function() {
-          foreground.transition()
-              .duration(750)
-              .call(arcTween, 0.5 * τ);
-        }, 1500);
+          transition.attrTween("d", function(d) {
 
-          function arcTween(transition, newAngle) {
+            var interpolate = d3.interpolate(d.endAngle, newAngle);
 
-            transition.attrTween("d", function(d) {
+            return function(t) {
 
-              var interpolate = d3.interpolate(d.endAngle, newAngle);
+              d.endAngle = interpolate(t);
 
-              return function(t) {
+              return arc(d);
+            };
+          });
+      }
+    </script>
+    <!--END OF: time line width A3 node test -->
 
-                d.endAngle = interpolate(t);
+    <!-- Last section explaining the timeline and mini time line -->
+    <div class="last-section">
+      <div class="container">
+        <img class="nodo-last" src="images/nodo.png" alt="nodo">
+        <div class="infinite-line">
+          <div class="red-line"></div>
+        </div>
+        <p><strong>Boole posee herramientas intuitivas e interactivas  para visualizar los tiempos totales de su proyecto.</strong> Planifica proyectos, realiza el seguimiento del estado y colabora con otros usuarios fácilmente desde prácticamente cualquier lugar.</p>
+        <img class="mini-line" src="images/mockup-mini-line.png" alt="Mini Line">
+      </div>
+    </div>
+    <!-- END OF: Last section explaining the timeline and mini time line -->
 
-                return arc(d);
-              };
-            });
-        }
-      </script>
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p><strong>Descarte las notas rápidas, hojas de cálculo, correo
+electrónico y el software inadecuado</strong> para gestionar sus proyectos y pase a ser una de las personas que usan Boole. Puede añadir tantos tableros y tantas personas como desee con su cuenta gratuita.</p>
+      </div>
+      <a class="green-register" href="#">Regístrese. ¡Es gratis!</a>
+    </footer>
+    <!-- END OF: Footer -->
 
+    <div class="end">
+      <p>© Copyright 2017, Boole, Inc. Todos los derechos reservados.</p>
+    </div>
 
     <!-- call to JQUERY -->
     <script src="jquery-3.2.1.min.js"></script>
