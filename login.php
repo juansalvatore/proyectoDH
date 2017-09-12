@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Crear una cuenta en Boole</title>
+    <title>Iniciar sesión en tu cuenta de Boole</title>
 
     <!-- Default metas -->
     <meta charset="utf-8">
@@ -32,13 +32,9 @@
     <div class="container">
       <!-- START register form -->
       <div class="form-container">
-        <h1>Crear una cuenta en <strong>Boole</strong></h1>
-        <p>Es fácil y rápido. ¡Ingrese sus datos y comienze a trabajar!</p>
+        <h1>Iniciá sesión en tu cuenta de Boole</h1>
         <form class="" action="controllers/register-controller.php" method="post">
           <div class="input-container">
-            <!-- Name input -->
-            <label for="username">Nombre completo</label>
-            <input class="form-input" type="text" name="username" value="" id="username" placeholder="Ingrese su nombre completo">
             <!-- Email input -->
             <label for="email">Email</label>
             <input class="form-input" type="text" name="email" value="" id="email" placeholder="Ingrese su email">
@@ -47,7 +43,7 @@
             <input class="form-input" type="password" name="password" value="" id="password" placeholder="Ingrese una contraseña">
           </div>
           <!-- Submit -->
-          <input class="submit-btn" type="submit" name="submit" value="Crear cuenta">
+          <input class="submit-btn" type="submit" name="submit" value="Ingresar">
         </form>
       </div>
       <!-- END register form -->
