@@ -33,7 +33,7 @@
       <!-- START register form -->
       <div class="form-container">
         <h1>Iniciá sesión en tu cuenta de Boole</h1>
-        <form class="" action="controllers/register-controller.php" method="post">
+        <form class="" action="controllers/login-controller.php" method="post">
           <div class="input-container">
             <!-- Email input -->
             <label for="email">Email</label>

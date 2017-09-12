@@ -2,7 +2,7 @@
 
 //Step 1 - Validate form
 //TODO - add deeper validations.
-}
+
 
 //validate user email
 $email = trim($_POST['email']);
@@ -24,4 +24,4 @@ if (empty($password)) {
   $password_flag = true;
 }
 
-var_dump($name_flag && $email_flag && $password_flag);
+var_dump($email_flag && $password_flag);
