@@ -97,7 +97,7 @@
       setInterval(function() {
         foreground.transition()
             .duration(750)
-            .call(arcTween, 0.5 * τ);
+            .call(arcTween, Math.random() * τ);
       }, 1500);
 
         function arcTween(transition, newAngle) {
