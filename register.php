@@ -21,7 +21,7 @@
       <div class="form-container">
         <h1>Crear una cuenta en <strong>Boole</strong></h1>
         <p>Es fácil y rápido. ¡Ingrese sus datos y comienze a trabajar!</p>
-        <form class="" action="controller/register-controller.php" method="post">
+        <form class="" action="controllers/register-controller.php" method="post">
           <div class="input-container">
             <!-- Name input -->
             <label for="username">Nombre completo</label>
