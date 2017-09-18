@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+require_once('helpers/form-functions.php');
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -38,13 +45,16 @@
           <div class="input-container">
             <!-- Name input -->
             <label for="username">Nombre completo</label>
-            <input class="form-input" type="text" name="username" value="" id="username" placeholder="Ingrese su nombre completo">
+            <input class="form-input" type="text" name="username" value="<?php echo display_correct_value('name'); ?>" id="username" placeholder="Ingrese su nombre completo">
+            <?php echo error_display('name'); ?>
             <!-- Email input -->
             <label for="email">Email</label>
-            <input class="form-input" type="text" name="email" value="" id="email" placeholder="Ingrese su email">
+            <input class="form-input" type="text" name="email" value="<?php echo display_correct_value('email')?>" id="email" placeholder="Ingrese su email">
+            <?php echo error_display('email'); ?>
             <!-- Password input -->
             <label for="password">Contraseña</label>
             <input class="form-input" type="password" name="password" value="" id="password" placeholder="Ingrese una contraseña">
+            <?php echo error_display('password'); ?>
           </div>
           <!-- Submit -->
           <input class="submit-btn" type="submit" name="submit" value="Crear cuenta">
@@ -54,3 +64,6 @@
     </div>
   </body>
 </html>
+
+<!-- Borrar los errores una vez utilizados -->
+<?php unset($_SESSION['errors']); ?>
