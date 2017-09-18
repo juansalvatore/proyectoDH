@@ -41,7 +41,6 @@ if (empty($password)) {
   echo "Por favor, ingrese una contraseña";
   $_SESSION['errors']['password'] = 'Por favor, ingrese una contraseña';
 } elseif(strlen($password) < 8) {
-  echo "<p>Su contraseña es demasiado corta</p>";
   $_SESSION['errors']['password'] = 'La contraseña es demasiado corta';
 } else {
   $password_flag = true;
