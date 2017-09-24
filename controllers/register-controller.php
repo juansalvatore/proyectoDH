@@ -38,7 +38,6 @@ if (empty($email)) {
 //due to security reasons
 $password = trim($_POST['password']);
 if (empty($password)) {
-  echo "Por favor, ingrese una contraseña";
   $_SESSION['errors']['password'] = 'Por favor, ingrese una contraseña';
 } elseif(strlen($password) < 8) {
   $_SESSION['errors']['password'] = 'La contraseña es demasiado corta';
