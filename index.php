@@ -1,5 +1,21 @@
 
-
+<?php
+  // TODO: Check for cookie and automatically enter to main page if password stored in cookie is equal to a password stored in DB
+  session_start();
+  // Read DB
+  $pathDB = 'db/users.json';
+  $usuariosDB = json_decode(file_get_contents($pathDB),true);
+  echo $_COOKIE["password"];
+  // Go through users inside db
+  if(isset($_COOKIE["password"])) {
+    for($i = 0; $i < count($usuariosDB); $i++) {
+      if(password_verify($_COOKIE["password"], $usuariosDB[$i]['password'])) {
+        //redirect and log in to main account
+        echo "hola";
+      }
+    }
+  }
+?>
 
 <!DOCTYPE html>
 <html>
