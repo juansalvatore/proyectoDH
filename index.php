@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,7 +14,7 @@
   <body>
     <!-- header with logo log in and register buttons -->
     <header>
-      <a href="index.html">
+      <a href="index.php">
         <div class="logo"></div>
       </a>
       <div class="header-right">

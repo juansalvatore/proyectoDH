@@ -66,6 +66,9 @@ if ($name_flag && $email_flag && $password_flag) {
   $users[] = $user;
   $json = json_encode($users);
   file_put_contents(DB_PATH, $json);
+
+  // TODO: Redirigir a pagina principal
+  
 } else {
   header("Location: ../register.php");
 }

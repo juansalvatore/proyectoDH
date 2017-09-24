@@ -1,8 +1,6 @@
 <?php
-
-session_start();
-require_once('helpers/form-functions.php');
-
+  session_start();
+  require_once('helpers/form-functions.php');
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +23,7 @@ require_once('helpers/form-functions.php');
   <body>
     <!-- header with logo log in and register buttons -->
     <header>
-      <a href="index.html">
+      <a href="index.php">
         <div class="logo"></div>
       </a>
       <div class="header-right">
