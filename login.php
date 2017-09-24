@@ -58,6 +58,9 @@
       </div>
       <!-- END register form -->
     </div>
+    <div class="end positionLogIn">
+      <p>© Copyright 2017, Boole, Inc. Todos los derechos reservados.</p>
+    </div>
   </body>
 </html>
 

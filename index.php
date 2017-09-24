@@ -164,7 +164,7 @@ electrónico y el software inadecuado</strong> para gestionar sus proyectos y pa
     </footer>
     <!-- END OF: Footer -->
 
-    <div class="end">
+    <div class="end positionIndex">
       <p>© Copyright 2017, Boole, Inc. Todos los derechos reservados.</p>
     </div>
 
