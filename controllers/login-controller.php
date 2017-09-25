@@ -55,8 +55,9 @@ if($email_flag && $password_flag) {
         // Expira en 1 hora
         $exipira = time() + 3600;
         setcookie($cookieName, $cookieValue, $expira);
-        header("Location: ../index.php");
+        header("Location: ../main.php");
       }
+      header("Location: ../main.php");
     } else {
       $_SESSION['errors']['password']  = 'Contraseña incorrecta';
       header("Location: ../login.php");
