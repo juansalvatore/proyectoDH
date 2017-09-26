@@ -49,14 +49,12 @@ if($email_flag && $password_flag) {
     if ($usuariosDB[$i]['email'] == $email && password_verify($password, $usuariosDB[$i]['password'])) {
       //recordar contraseña
       if($_POST['remember'] == true) {
-        var_dump($_COOKIE);
-        // echo "hola";
         //TODO: Create cookie that stores hashed password
         $cookieName = "password";
         $cookieValue = $password;
         // Expira en 1 hora
-        $expira = time()+3600;
-        setcookie($cookieName, $cookieValue, $expira, "/");
+        $exipira = time() + 3600;
+        setcookie($cookieName, $cookieValue, $expira);
         header("Location: ../main.php");
       }
       header("Location: ../main.php");
