@@ -49,7 +49,7 @@
             <input class="form-input" type="password" name="password" value="" id="password" placeholder="Ingrese una contraseña">
             <?php echo error_display('password'); ?>
             <!-- Recordar contraseña -->
-            <input class="remember" type="checkbox" name="remember" value="true">
+            <input class="remember" type="checkbox" name="remember" value="true" id="remember">
             <label class="remember" for="remember">Recordar contraseña</label>
           </div>
           <!-- Submit -->

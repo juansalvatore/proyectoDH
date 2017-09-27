@@ -5,13 +5,13 @@
   // Read DB
   $pathDB = 'db/users.json';
   $usuariosDB = json_decode(file_get_contents($pathDB),true);
-  echo $_COOKIE["password"];
+
   // Go through users inside db
-  if(isset($_COOKIE["password"])) {
+  if(isset($_COOKIE["password"]) && isset($_COOKIE["email"])) {
     for($i = 0; $i < count($usuariosDB); $i++) {
       if(password_verify($_COOKIE["password"], $usuariosDB[$i]['password'])) {
         //redirect and log in to main account
-        echo "hola";
+        header('Location:main.php');
       }
     }
   }

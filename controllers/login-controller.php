@@ -34,9 +34,6 @@ $password = trim($_POST['password']);
 if (empty($password)) {
   //echo "Por favor, ingrese una contraseña";
   $_SESSION['errors']['password'] = 'Por favor, ingrese una contraseña';
-} elseif(strlen($password) < 8) {
-  //echo "<p>Su contraseña es demasiado corta</p>";
-  $_SESSION['errors']['password'] = 'La contraseña es demasiado corta';
 } else {
   $password_flag = true;
 }
@@ -49,12 +46,21 @@ if($email_flag && $password_flag) {
     if ($usuariosDB[$i]['email'] == $email && password_verify($password, $usuariosDB[$i]['password'])) {
       //recordar contraseña
       if($_POST['remember'] == true) {
-        //TODO: Create cookie that stores hashed password
-        $cookieName = "password";
-        $cookieValue = $password;
+
         // Expira en 1 hora
         $exipira = time() + 3600;
-        setcookie($cookieName, $cookieValue, $expira);
+
+        //Create email cookie
+        $cookieEmailName = "email";
+        $cookieEmailValue = $email;
+        setcookie($cookieEmailName, $cookieEmailValue, $exipira, '/');
+
+        //Create password cookies
+        $cookiePassName = "password";
+        //TODO: hash password to compare
+        $cookiePassValue = $password;
+        setcookie($cookiePassName, $cookiePassValue, $expira, '/');
+        setcookie();
         header("Location: ../main.php");
       }
       header("Location: ../main.php");
