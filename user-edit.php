@@ -11,11 +11,12 @@
     <title>Boole</title>
     <link rel="stylesheet" href="styles/register.min.css">
     <link rel="stylesheet" href="styles/main-style.min.css">
+    <link rel="stylesheet" href="/css/master.css">
   </head>
   <body>
     <?php require_once 'left-navbar.php' ?>
     <div class="container">
-      <form action="user-edit.php" method="post">
+      <form action="controllers/user-edit-controller.php" method="post">
         <div class="input-container">
           <!-- NAME -->
           <label for="name">Nombre</label>
@@ -24,18 +25,17 @@
           <label for="lastName">Apellido</label>
           <input class="form-input" type="text" name="lastName" value="" placeholder="Ingrese su apellido">
           <!-- TEL -->
-          <label for="">Teléfono</label>
-          <input class="form-input" type="text" name="" value="" placeholder="Ingrese su teléfono">
+          <label for="tel">Teléfono</label>
+          <input class="form-input" type="tel" name="tel" value="" placeholder="Ingrese su teléfono">
           <!-- OCCUPATION -->
-          <label for="">Ocupación</label>
-          <input class="form-input" type="text" name="" value="" placeholder="Ingrese su ocupación">
+          <label for="occupation">Ocupación</label>
+          <input class="form-input" type="text" name="occupation" value="" placeholder="Ingrese su ocupación">
           <!-- DESCRIPTION -->
-          <label for="description">Descripcción</label>
-          <textarea class="form-input" name="description">
-          </textarea>
+          <label for="description">Descripción</label>
+          <textarea class="form-input" name="description"></textarea>
           <!-- DIRECTION -->
-          <label for="">Dirección</label>
-          <input class="form-input" type="text" name="" value="" placeholder="Ingrese su dirección">
+          <label for="direction">Dirección</label>
+          <input class="form-input" type="text" name="direction" value="" placeholder="Ingrese su dirección">
           <div class="selectors">
             <!-- COUNTRY -->
             <label for="country">País</label>
