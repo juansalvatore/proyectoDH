@@ -1,8 +1,6 @@
 <?php
   session_start();
 
-  echo "COOKIE<br>";
-  var_dump($_COOKIE);
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,22 +18,23 @@
         <div class="input-container">
           <!-- NAME -->
           <label for="name">Nombre</label>
-          <input class="form-input" type="text" name="name" value="" placeholder="Ingrese su nombre">
+          <input id="name" class="form-input" type="text" name="name" value="" placeholder="Ingrese su nombre">
           <!-- SURNAME -->
           <label for="lastName">Apellido</label>
-          <input class="form-input" type="text" name="lastName" value="" placeholder="Ingrese su apellido">
+          <input id="lastName" class="form-input" type="text" name="lastName" value="" placeholder="Ingrese su apellido">
           <!-- TEL -->
           <label for="tel">Teléfono</label>
-          <input class="form-input" type="tel" name="tel" value="" placeholder="Ingrese su teléfono">
+          <input id="tel" class="form-input" type="tel" name="tel" value="" placeholder="Ingrese su teléfono">
           <!-- OCCUPATION -->
           <label for="occupation">Ocupación</label>
-          <input class="form-input" type="text" name="occupation" value="" placeholder="Ingrese su ocupación">
+          <input id="occupation" class="form-input" type="text" name="occupation" value="" placeholder="Ingrese su ocupación">
           <!-- DESCRIPTION -->
           <label for="description">Descripción</label>
-          <textarea class="form-input" name="description"></textarea>
+          <textarea id="description" class="form-input" name="description"></textarea>
           <!-- DIRECTION -->
           <label for="direction">Dirección</label>
-          <input class="form-input" type="text" name="direction" value="" placeholder="Ingrese su dirección">
+          <input id="direction" class="form-input" type="text" name="direction" value="" placeholder="Ingrese su dirección">
+          <!-- SELECTORS -->
           <div class="selectors">
             <!-- COUNTRY -->
             <label for="country">País</label>
