@@ -1,6 +1,11 @@
 <?php
 
 session_start();
+// CONECT TO MYSQL DATABASE
+$dsn = 'mysql:host=localhost;dbname=bool-db;charset=utf8mb4;port=3306;';
+$db_user = 'root';
+$db_pass = 'root';
+$db = new PDO($dsn, $db_user, $db_pass);
 
 //Unset session errors
 unset($_SESSION['errors']);
@@ -48,27 +53,44 @@ if (empty($password)) {
 
 //execute this actions if all the flags are true
 if ($name_flag && $email_flag && $password_flag) {
-  $user = [
-    'username' => $name,
-    'email' => $email,
-    'password' => password_hash($password, PASSWORD_DEFAULT)
-  ];
 
-  //retrieve dabase InfiniteIterator
-  if (file_exists(DB_PATH)) {
-    $json = file_get_contents(DB_PATH);
-    $users = json_decode($json, true);
-  } else {
-    $usuarios = [];
-  }
+  $stmt = $db->prepare("INSERT into user (name, email, password) values (:name, :email, :password)");
+  $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+  $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+  $stmt->bindValue(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
 
-  //Save user
-  $users[] = $user;
-  $json = json_encode($users);
-  file_put_contents(DB_PATH, $json);
 
-  // TODO: Redirigir a pagina principal
-  
+  $stmt->execute();
+
+  // PREGUNTAR ESTA OPCION
+  // $sql = "INSERT into user (name, email, password) values ('$name', '$email', '$password')";
+  // mysqli_query($db, $sql);
+
+  header("Location: ../main.php");
+
+
+
+
+  // $user = [
+  //   'username' => $name,
+  //   'email' => $email,
+  //   'password' => password_hash($password, PASSWORD_DEFAULT)
+  // ];
+  //
+  // //retrieve dabase InfiniteIterator
+  // if (file_exists(DB_PATH)) {
+  //   $json = file_get_contents(DB_PATH);
+  //   $users = json_decode($json, true);
+  // } else {
+  //   $usuarios = [];
+  // }
+  //
+  // //Save user
+  // $users[] = $user;
+  // $json = json_encode($users);
+  // file_put_contents(DB_PATH, $json);
+  //
+
 } else {
   header("Location: ../register.php");
 }
