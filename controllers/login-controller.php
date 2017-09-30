@@ -40,35 +40,51 @@ if (empty($password)) {
 
 // compare users with database and log in if comparison is right
 if($email_flag && $password_flag) {
-  // go through all the decoded json
-  for($i = 0; $i < count($usuariosDB); $i++) {
-    // check if db email and password is equal to entered email and password
-    if ($usuariosDB[$i]['email'] == $email && password_verify($password, $usuariosDB[$i]['password'])) {
-      //recordar contraseña
-      if($_POST['remember'] == true) {
+  // compare mail with db mails
 
-        // Expira en 1 hora
-        $exipira = time() + 3600;
+  // CONECT TO MYSQL DATABASE
+  $dsn = 'mysql:host=localhost;dbname=bool-db;charset=utf8mb4;port=3306;';
+  $db_user = 'root';
+  $db_pass = 'root';
+  $db = new PDO($dsn, $db_user, $db_pass);
 
-        //Create email cookie
-        $cookieEmailName = "email";
-        $cookieEmailValue = $email;
-        setcookie($cookieEmailName, $cookieEmailValue, $exipira, '/');
+  // QUERY: SELECT email, password FROM user WHERE email LIKE 'juansalvatore@live.com.ar'
+  $stmt = $db->prepare("SELECT email, password FROM user WHERE email LIKE :email");
+  $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+  $stmt->execute();
 
-        //Create password cookies
-        $cookiePassName = "password";
-        //TODO: hash password to compare
-        $cookiePassValue = $password;
-        setcookie($cookiePassName, $cookiePassValue, $expira, '/');
-        setcookie();
-        header("Location: ../main.php");
-      }
+  $emailAndPassword = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+  // check if db email and password is equal to entered email and password
+  if ($email == $emailAndPassword[0]['email'] && password_verify($password, $emailAndPassword[0]['password'])) {
+
+    //recordar contraseña
+    if($_POST['remember'] == true) {
+
+      // Expira en 1 hora
+      $exipira = time() + 3600;
+
+      //Create email cookie
+      $cookieEmailName = "email";
+      $cookieEmailValue = $email;
+      setcookie($cookieEmailName, $cookieEmailValue, $exipira, '/');
+
+      //Create password cookies
+      $cookiePassName = "password";
+      //TODO: hash password to compare
+      $cookiePassValue = $password;
+      setcookie($cookiePassName, $cookiePassValue, $expira, '/');
+      setcookie();
       header("Location: ../main.php");
-    } else {
-      $_SESSION['errors']['password']  = 'Contraseña incorrecta';
-      header("Location: ../login.php");
+
     }
+    header("Location: ../main.php");
+  } else {
+    $_SESSION['errors']['password']  = 'Contraseña incorrecta';
+    header("Location: ../login.php");
   }
+
 } else {
   // return to login if login failed, TODO: display errors
   header("Location: ../login.php");
