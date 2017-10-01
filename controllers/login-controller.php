@@ -48,7 +48,7 @@ if($email_flag && $password_flag) {
   $db_pass = 'root';
   $db = new PDO($dsn, $db_user, $db_pass);
 
-  // QUERY: SELECT email, password FROM user WHERE email LIKE 'juansalvatore@live.com.ar'
+  // QUERY: SELECT email, password FROM user WHERE email LIKE :email
   $stmt = $db->prepare("SELECT email, password FROM user WHERE email LIKE :email");
   $stmt->bindValue(':email', $email, PDO::PARAM_STR);
   $stmt->execute();
@@ -63,12 +63,12 @@ if($email_flag && $password_flag) {
     if($_POST['remember'] == true) {
 
       // Expira en 1 hora
-      $exipira = time() + 3600;
+      $expira = time() + 3600;
 
       //Create email cookie
       $cookieEmailName = "email";
       $cookieEmailValue = $email;
-      setcookie($cookieEmailName, $cookieEmailValue, $exipira, '/');
+      setcookie($cookieEmailName, $cookieEmailValue, $expira, '/');
 
       //Create password cookies
       $cookiePassName = "password";

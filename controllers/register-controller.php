@@ -54,43 +54,56 @@ if (empty($password)) {
 
 //execute this actions if all the flags are true
 if ($name_flag && $email_flag && $password_flag) {
-
-  $stmt = $db->prepare("INSERT into user (name, email, password) values (:name, :email, :password)");
-  $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+  // QUERY: SELECT email, password FROM user WHERE email LIKE :email
+  $stmt = $db->prepare("SELECT email FROM user WHERE email LIKE :email");
   $stmt->bindValue(':email', $email, PDO::PARAM_STR);
-  $stmt->bindValue(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
-
-
   $stmt->execute();
 
-  // PREGUNTAR ESTA OPCION
-  // $sql = "INSERT into user (name, email, password) values ('$name', '$email', '$password')";
-  // mysqli_query($db, $sql);
+  $emailDB = $stmt->fetch(PDO::FETCH_ASSOC);
 
-  header("Location: ../main.php");
+  // check if email exists
+  if($emailDB) {
+    $_SESSION['errors']['email'] = 'El email ya existe.';
+    $_SESSION['inputs']['email'] = "";
+    header("Location: ../register.php");
+  } else {
+    $stmt = $db->prepare("INSERT into user (name, email, password) values (:name, :email, :password)");
+    $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+    $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+    $stmt->bindValue(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
+
+
+    $stmt->execute();
+
+    // PREGUNTAR ESTA OPCION
+    // $sql = "INSERT into user (name, email, password) values ('$name', '$email', '$password')";
+    // mysqli_query($db, $sql);
+
+    header("Location: ../main.php");
 
 
 
 
-  // $user = [
-  //   'username' => $name,
-  //   'email' => $email,
-  //   'password' => password_hash($password, PASSWORD_DEFAULT)
-  // ];
-  //
-  // //retrieve dabase InfiniteIterator
-  // if (file_exists(DB_PATH)) {
-  //   $json = file_get_contents(DB_PATH);
-  //   $users = json_decode($json, true);
-  // } else {
-  //   $usuarios = [];
-  // }
-  //
-  // //Save user
-  // $users[] = $user;
-  // $json = json_encode($users);
-  // file_put_contents(DB_PATH, $json);
-  //
+    // $user = [
+    //   'username' => $name,
+    //   'email' => $email,
+    //   'password' => password_hash($password, PASSWORD_DEFAULT)
+    // ];
+    //
+    // //retrieve dabase InfiniteIterator
+    // if (file_exists(DB_PATH)) {
+    //   $json = file_get_contents(DB_PATH);
+    //   $users = json_decode($json, true);
+    // } else {
+    //   $usuarios = [];
+    // }
+    //
+    // //Save user
+    // $users[] = $user;
+    // $json = json_encode($users);
+    // file_put_contents(DB_PATH, $json);
+    //
+  }
 
 } else {
   header("Location: ../register.php");
