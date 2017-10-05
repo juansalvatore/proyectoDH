@@ -9,7 +9,7 @@
     <title>Boole</title>
     <link rel="stylesheet" href="styles/register.min.css">
     <link rel="stylesheet" href="styles/main-style.min.css">
-    <link rel="stylesheet" href="/css/master.css">
+    <link rel="stylesheet" href="styles/user-edit-style.min.css">
   </head>
   <body>
     <?php require_once 'left-navbar.php' ?>
