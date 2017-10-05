@@ -62,6 +62,9 @@ if($email_flag && $password_flag) {
     //recordar contraseña
     if($_POST['remember'] == true) {
 
+      // CREATE SESSION
+      $_SESSION['email'] = $email;
+
       // Expira en 1 hora
       $expira = time() + 3600;
 

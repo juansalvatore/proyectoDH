@@ -1,7 +1,9 @@
 <?php
   session_start();
-
+  var_dump($_COOKIE['email']);
+  
 ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -14,7 +16,7 @@
   <body>
     <?php require_once 'left-navbar.php' ?>
     <div class="container">
-      <form action="controllers/user-edit-controller.php" method="post">
+      <form class="" action='controllers/user-edit-controller.php' method="post">
         <div class="input-container">
           <!-- NAME -->
           <label for="name">Nombre</label>

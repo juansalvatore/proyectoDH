@@ -1,3 +1,3 @@
-SELECT email, password FROM user 
-
-
+UPDATE user
+(lastName) SET ('Salvatore')
+WHERE email LIKE 'juansalvatore@live.com.ar'
