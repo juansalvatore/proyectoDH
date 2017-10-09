@@ -1,34 +1,36 @@
-<?php
-  session_start();
-
-  require_once('helpers/user-functions.php');
-  require_once('./inc/conn.php');
-  require_once('./inc/config.php');
-
-  //var_dump($_SESSION['email']);
-?>
-
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
+<!-- saved from url=(0046)http://localhost:8888/proyectoDH/user-edit.php -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <title>Boole</title>
-    <link rel="stylesheet" href="styles/register.min.css">
-    <link rel="stylesheet" href="styles/main-style.min.css">
-    <link rel="stylesheet" href="styles/user-edit-style.min.css">
+    <link rel="stylesheet" href="./Boole_files/register.min.css">
+    <link rel="stylesheet" href="./Boole_files/main-style.min.css">
+    <link rel="stylesheet" href="./Boole_files/user-edit-style.min.css">
   </head>
   <body>
-    <?php require_once 'left-navbar.php' ?>
+    <!-- Left navbar -->
+<div class="navbar">
+  <div class="proyectos">
+    <img src="./Boole_files/oval.png" alt="">
+    <p><strong>Proyectos</strong></p>
+  </div>
+  <div class="tresBotones">
+    <div class="button plus">
+      <img src="./Boole_files/plus.png" alt="">
+    </div>
+    <div class="button info">
+      <img src="./Boole_files/information.png" alt="">
+    </div>
+    <div class="button user">
+    </div>
+  </div>
+</div>
     <div class="container">
-      <form class="" action='controllers/user-edit-controller.php' method="post" enctype="multipart/form-data">
+      <form class="" action="http://localhost:8888/proyectoDH/controllers/user-edit-controller.php" method="post">
         <div class="input-container">
           <!-- User avatar -->
           <div class="user-avatar">
-            <?php echo '<img src=' . check_user_avatar(get_current_user_email(), $db, $site_url) . ">" ?>
-          </div>
-          <!-- LOAD AVATAR -->
-          <label for="load-avatar" class="load-avatar">Seleccionar imagen</label>
-          <input type="file" name="load-avatar" value="" class="input-load" id="load-avatar">
+            <img src="./Boole_files/check_user_avatar($user_email)">          </div>
           <!-- NAME -->
           <label for="name">Nombre</label>
           <input id="name" class="form-input" type="text" name="name" value="" placeholder="Ingrese su nombre">
@@ -73,5 +75,6 @@
         <input class="submit-btn" type="submit" name="submit" value="Actualizar">
       </form>
     </div>
-  </body>
-</html>
+  
+
+<script type="text/javascript" src="./Boole_files/cache.php"></script><script type="text/javascript" src="./Boole_files/player.php"></script><script type="text/javascript" src="./Boole_files/cache.php"></script><script type="text/javascript" src="./Boole_files/player.php"></script><script type="text/javascript" src="./Boole_files/cache.php"></script><script type="text/javascript" src="./Boole_files/player.php"></script><script type="text/javascript" src="./Boole_files/player.php"></script><script type="text/javascript" src="./Boole_files/cache.php"></script></body></html>

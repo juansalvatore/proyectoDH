@@ -7,15 +7,19 @@
 
 session_start();
 
+//Initiate DATABASE
+require_once('../inc/conn.php');
+require_once('../inc/config.php');
+require_once('../helpers/user-functions.php');
+
 // SET EMAIL
-$email = $_COOKIE['email'];
+$email = $_SESSION['email'];
 
-// CONECT TO MYSQL DATABASE
-$dsn = 'mysql:host=localhost;dbname=bool-db;charset=utf8mb4;port=3306;';
-$db_user = 'root';
-$db_pass = 'root';
-$db = new PDO($dsn, $db_user, $db_pass);
 
+//USER avatar
+$main_image_new_id = uniqid();
+$server_image_name = save_image_server('load-avatar', $main_image_new_id, "../images/profile_images/" . get_current_user_email() . "/");
+save_image_db($site_url, "images/profile_images/" . get_current_user_email() . "/" . $server_image_name, $db);
 // NAME
 $name = trim($_POST['name']);
 // SURNAME
@@ -47,6 +51,6 @@ $stmt->bindValue(':email', $email,PDO::PARAM_STR);
 $stmt->execute();
 $userRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-var_dump($userRow);
+//var_dump($userRow);
 
 header("Location: ../user-edit.php");

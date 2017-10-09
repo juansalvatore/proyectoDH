@@ -4,10 +4,10 @@
 
 $db_name = 'bool_db';
 $port = '8889';
-
-$dsn = "mysql:host=localhost;dbname=$db_name;charset=utf8mb4;port=$port;";
 $db_user = 'root';
 $db_pass = 'root';
+
+$dsn = "mysql:host=localhost;dbname=$db_name;charset=utf8mb4;port=$port;";
 
 try {
   $db = new PDO($dsn, $db_user, $db_pass);
