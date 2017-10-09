@@ -2,11 +2,8 @@
 
 session_start();
 
-// CONECT TO MYSQL DATABASE
-$dsn = 'mysql:host=localhost;dbname=bool-db;charset=utf8mb4;port=3306;';
-$db_user = 'root';
-$db_pass = 'root';
-$db = new PDO($dsn, $db_user, $db_pass);
+//Initiate DATABASE
+require_once('../inc/conn.php');
 
 //Unset session errors
 unset($_SESSION['errors']);
