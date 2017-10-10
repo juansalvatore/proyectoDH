@@ -56,6 +56,9 @@ if($email_flag && $password_flag) {
   // check if db email and password is equal to entered email and password
   if ($email == $emailAndPassword[0]['email'] && password_verify($password, $emailAndPassword[0]['password'])) {
 
+    //save email in session
+    $_SESSION['email'] = $email;
+
     //recordar contraseña
     if($_POST['remember'] == true) {
 

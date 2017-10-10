@@ -72,6 +72,9 @@ if ($name_flag && $email_flag && $password_flag) {
 
     $stmt->execute();
 
+    //save email in session
+    $_SESSION['email'] = $email;
+
     // PREGUNTAR ESTA OPCION
     // $sql = "INSERT into user (name, email, password) values ('$name', '$email', '$password')";
     // mysqli_query($db, $sql);

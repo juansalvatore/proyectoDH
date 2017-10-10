@@ -22,7 +22,11 @@ function check_user_avatar($user_email, $db, $site_url) {
 
 //Ger current user email from session
 function get_current_user_email() {
-  return $_SESSION['email'];
+  if (isset($_SESSION['email'])) {
+    return $_SESSION['email'];
+  } else {
+    echo "No existe el email en la sesion";
+  }
 }
 
 //Save img in server
@@ -46,7 +50,6 @@ function save_image_server($input_name, $image_name, $path) {
 function save_image_db($site_url, $image_path, $db) {
   $stmt = $db->prepare("UPDATE user SET avatar = " . "'" . $site_url . $image_path . "'" . " WHERE email LIKE " . "'" . get_current_user_email() . "'");
   $stmt->bindValue(':email', get_current_user_email(), PDO::PARAM_STR);
-  var_dump($stmt);
   $stmt->execute();
   $user_avatar = $stmt->fetch(PDO::FETCH_ASSOC);
 }

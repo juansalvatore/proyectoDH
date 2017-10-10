@@ -53,4 +53,4 @@ $userRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 //var_dump($userRow);
 
-header("Location: ../user-edit.php");
+//header("Location: ../user-edit.php");

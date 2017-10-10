@@ -1,12 +1,9 @@
 <?php
-  session_start();
-
   require_once('./helpers/session-check.php');
   require_once('helpers/user-functions.php');
   require_once('./inc/conn.php');
   require_once('./inc/config.php');
 
-  //var_dump($_SESSION['email']);
 ?>
 
 <!DOCTYPE html>
