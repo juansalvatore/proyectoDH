@@ -1,5 +1,5 @@
 <?php
-
+require_once('./helpers/session-check.php');
 ?>
 <!DOCTYPE html>
 <html>
