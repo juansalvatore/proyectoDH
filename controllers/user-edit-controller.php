@@ -30,16 +30,16 @@ $name = trim($_POST['name']);
 // SURNAME
 $lastName = trim($_POST['lastName']);
 // TEL
-$phone = trim($_POST['tel']);
+$phone = trim($_POST['phone']);
 // OCCUPATION
-$ocupation = trim($_POST['occupation']);
+$ocupation = trim($_POST['ocupation']);
 // DESCRIPTION
 $description = trim($_POST['description']);
 // DIRECTION
 $adress = trim($_POST['direction']);
 
 // Assign values to User's attributes
-$user->setName($email);
+$user->setName($name);
 $user->setLastName($lastName);
 $user->setPhone($phone);
 $user->setOcupation($ocupation);
@@ -60,7 +60,17 @@ $user->setAdress($adress);
 // $stmt->bindValue(':adress', $adress,PDO::PARAM_STR);
 // $stmt->execute();
 
-$user->updateValueDb('lastName', $user->getLastName($lastName), $db);
+$colName = ['name', 'lastName', 'phone', 'ocupation', 'description', 'adress'];
+
+$value = [$user->getName($name), $user->getLastName($lastName), $user->getPhone($phone), $user->getOcupation($ocupation), $user->getDescription($description), $user->getAdress($adress)];
+
+for($i = 0; $i< count($colName); $i++) {
+  if() {
+    $user->updateValueDb($colName[$i], $value[$i], $db);
+  }
+
+}
+
 
 // BRING user by EMAIL FROM DB
 $stmt = $db->prepare("SELECT * FROM user WHERE email LIKE :email");
