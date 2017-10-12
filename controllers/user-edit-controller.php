@@ -65,10 +65,9 @@ $colName = ['name', 'lastName', 'phone', 'ocupation', 'description', 'adress'];
 $value = [$user->getName($name), $user->getLastName($lastName), $user->getPhone($phone), $user->getOcupation($ocupation), $user->getDescription($description), $user->getAdress($adress)];
 
 for($i = 0; $i< count($colName); $i++) {
-  if() {
+  if(!empty($_POST[$colName[$i]])) {
     $user->updateValueDb($colName[$i], $value[$i], $db);
   }
-
 }
 
 
@@ -81,3 +80,6 @@ $userRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
 //var_dump($userRow);
 
 //header("Location: ../user-edit.php");
+
+echo "VAR DUMP POST<br>";
+var_dump($_POST);
