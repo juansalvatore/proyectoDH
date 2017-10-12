@@ -16,7 +16,6 @@ $usuariosDB = json_decode(file_get_contents($pathDB),true);
 //Step 1 - Validate form
 //TODO - add deeper validations.
 
-
 //validate user email
 $email = trim($_POST['email']);
 if (empty($email)) {
@@ -60,7 +59,7 @@ if($email_flag && $password_flag) {
     $_SESSION['email'] = $email;
 
     //recordar contraseña
-    if($_POST['remember'] == true) {
+    if(isset($_POST['remember'])) {
 
       // CREATE SESSION
       $_SESSION['email'] = $email;
@@ -82,6 +81,7 @@ if($email_flag && $password_flag) {
       header("Location: ../main.php");
 
     }
+
     header("Location: ../main.php");
   } else {
     $_SESSION['errors']['password']  = 'Contraseña incorrecta';

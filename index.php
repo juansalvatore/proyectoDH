@@ -1,7 +1,7 @@
 
 <?php
   // TODO: Check for cookie and automatically enter to main page if password stored in cookie is equal to a password stored in DB
-  session_start();
+  // session_start();
   // Read DB
   $pathDB = 'db/users.json';
   $usuariosDB = json_decode(file_get_contents($pathDB),true);

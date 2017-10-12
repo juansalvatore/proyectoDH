@@ -84,4 +84,24 @@ class User {
       return $_SESSION['email'];
     }
   }
+
+  public function check_user_avatar($db, $site_url) {
+
+    //Check if user has an uploaded avatar
+    $stmt = $db->prepare("SELECT avatar FROM user WHERE email LIKE :email");
+    $stmt->bindValue(':email', $this->getUserEmail(), PDO::PARAM_STR);
+    $stmt->execute();
+    $user_avatar = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    //Assing a default if avatar col is empty
+    if (is_null($user_avatar["avatar"])) {
+      $built_url = $site_url . "images/default-user.png";
+    } else {
+      $built_url = $user_avatar["avatar"];
+    }
+
+    //return avatar url
+    return $built_url;
+
+  }
 }

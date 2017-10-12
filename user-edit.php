@@ -1,8 +1,11 @@
 <?php
-  require_once('./helpers/session-check.php');
+  require_once('helpers/session-check.php');
   require_once('helpers/user-functions.php');
-  require_once('./inc/conn.php');
-  require_once('./inc/config.php');
+  require_once('inc/conn.php');
+  require_once('inc/config.php');
+  require_once('classes/user.php');
+
+  $user = new User()
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +24,7 @@
         <div class="input-container">
           <!-- User avatar -->
           <div class="user-avatar">
-            <?php echo '<img src=' . check_user_avatar(get_current_user_email(), $db, $site_url) . ">" ?>
+            <?php echo '<img src=' . $user->check_user_avatar($db, $site_url) . ">" ?>
           </div>
           <!-- LOAD AVATAR -->
           <label for="load-avatar" class="load-avatar">Seleccionar imagen</label>
