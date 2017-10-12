@@ -3,7 +3,6 @@
   require_once('helpers/user-functions.php');
   require_once('./inc/conn.php');
   require_once('./inc/config.php');
-
 ?>
 
 <!DOCTYPE html>

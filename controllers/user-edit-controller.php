@@ -15,15 +15,17 @@ require_once('../helpers/user-functions.php');
 // SET EMAIL
 $email = $_SESSION['email'];
 
-
 //USER avatar
-$main_image_new_id = uniqid();
-$server_image_name = save_image_server('load-avatar', $main_image_new_id, "../images/profile_images/" . get_current_user_email() . "/");
-save_image_db($site_url, "images/profile_images/" . get_current_user_email() . "/" . $server_image_name, $db);
+if ($_FILES[$input_name]['error'] == UPLOAD_ERR_OK) {
+  $main_image_new_id = uniqid();
+  $server_image_name = save_image_server('load-avatar', $main_image_new_id, "../images/profile_images/" . get_current_user_email() . "/");
+  save_image_db($site_url, "images/profile_images/" . get_current_user_email() . "/" . $server_image_name, $db);
+} 
+
 // NAME
 $name = trim($_POST['name']);
 // SURNAME
-$lastName = trim($_POST['surname']);
+$lastName = trim($_POST['lastName']);
 // TEL
 $phone = trim($_POST['tel']);
 // OCCUPATION
