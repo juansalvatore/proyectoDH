@@ -11,11 +11,10 @@ class User {
   protected $adress;
   protected $avatar;
 
-  public function __construct($name, $lastName, $email, $password, $phone, $ocupation, $description, $adress, $avatar) {
+  public function __construct($email, $password) {
     $this->email=$email;
     $this->password=$password;
   }
-
   public function setName($name) {
     $this->name=$name;
   }
@@ -45,7 +44,7 @@ class User {
   }
 
   /////////////
-
+  
   public function getName() {
     return $this->name;
   }
@@ -72,5 +71,19 @@ class User {
   }
   public function getAvatar() {
     return $this->avatar;
+  }
+
+  function updateValueDb($colName, $value, $db) {
+    $stmt = $db->prepare("UPDATE user SET {$colName} = :{$colName} WHERE".getUserEmail()."LIKE :".getUserEmail());
+    $stmt->bindValue(':'.$colName, $value,PDO::PARAM_STR);
+  }
+
+  //Ger current user email from session
+  function getUserEmail() {
+    session_start();
+
+    if (isset($_SESSION['email'])) {
+      return $_SESSION['email'];
+    }
   }
 }
