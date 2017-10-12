@@ -11,8 +11,14 @@ class User {
   protected $adress;
   protected $avatar;
 
-  public function __construct($email, $password) {
+  public function __construct() {
+  }
+
+
+  public function setEmail() {
     $this->email=$email;
+  }
+  public function setPassword() {
     $this->password=$password;
   }
   public function setName($name) {
@@ -20,12 +26,6 @@ class User {
   }
   public function setLastName($lastName) {
     $this->lastName=$lastName;
-  }
-  public function setEmail($email) {
-    $this->email=$email;
-  }
-  public function setPassword($password) {
-    $this->password=$password;
   }
   public function setPhone($phone) {
     $this->phone=$phone;
@@ -44,18 +44,17 @@ class User {
   }
 
   /////////////
-  
-  public function getName() {
-    return $this->name;
-  }
-  public function getLastName() {
-    return $this->lastName;
-  }
   public function getEmail() {
     return $this->email;
   }
   public function getPassword() {
     return $this->password;
+  }
+  public function getName() {
+    return $this->name;
+  }
+  public function getLastName() {
+    return $this->lastName;
   }
   public function getPhone() {
     return $this->phone;
@@ -73,15 +72,14 @@ class User {
     return $this->avatar;
   }
 
-  function updateValueDb($colName, $value, $db) {
-    $stmt = $db->prepare("UPDATE user SET {$colName} = :{$colName} WHERE".getUserEmail()."LIKE :".getUserEmail());
-    $stmt->bindValue(':'.$colName, $value,PDO::PARAM_STR);
+  public function updateValueDb($colName, $value, $db) {
+    $email = $this->getUserEmail();
+    $stmt = $db->prepare("UPDATE user SET {$colName} = \"{$value}\" WHERE email LIKE "."\"".$email."\"");
+    $stmt->execute();
   }
 
-  //Ger current user email from session
-  function getUserEmail() {
-    session_start();
-
+  //Get current user email from session
+  public function getUserEmail() {
     if (isset($_SESSION['email'])) {
       return $_SESSION['email'];
     }
