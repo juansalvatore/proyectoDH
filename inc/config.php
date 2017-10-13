@@ -1,4 +1,6 @@
 <?php
 
 //Actual site url
-$site_url = "http://localhost/";
+//JUAN MAC - $site_url = "http://localhost/";
+//GASTON LINUX -
+$site_url = "http://localhost/proyectoDH/";
