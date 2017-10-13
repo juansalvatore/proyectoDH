@@ -11,8 +11,10 @@
     <div class="button info">
       <img src="images/information.png" alt="">
     </div>
-    <div class="button user">
-      <?php echo '<img src=' . check_user_avatar(get_current_user_email(), $db, $site_url) . ">" ?>
-    </div>
+    <a href="user-edit.php">
+      <div class="button user">
+        <?php echo '<img src=' . check_user_avatar(get_current_user_email(), $db, $site_url) . ">" ?>
+      </div>
+    </a>
   </div>
 </div>
