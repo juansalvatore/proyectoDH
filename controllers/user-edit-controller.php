@@ -60,14 +60,18 @@ $user->setAdress($adress);
 // $stmt->bindValue(':adress', $adress,PDO::PARAM_STR);
 // $stmt->execute();
 
-$user->updateValueDb('lastName', $user->getLastName($lastName), $db);
+//$user->updateValueDb('lastName', $user->getLastName($lastName), $db);
 
-// BRING user by EMAIL FROM DB
-$stmt = $db->prepare("SELECT * FROM user WHERE email LIKE :email");
-$stmt->bindValue(':email', $email,PDO::PARAM_STR);
-$stmt->execute();
-$userRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$colName = ['name', 'lastName', 'phone', 'ocupation', 'description', 'adress'];
 
-//var_dump($userRow);
+$value = [$user->getName($name), $user->getLastName($lastName), $user->getPhone($phone), $user->getOcupation($ocupation), $user->getDescription($description), $user->getAdress($adress)];
+
+for($i = 0; $i< count($colName); $i++) {
+  if(!empty($_POST[$colName[$i]])) {
+    $user->updateValueDb($colName[$i], $value[$i], $db);
+  }
+
+}
+
 
 header("Location: ../user-edit.php");
