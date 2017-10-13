@@ -19,7 +19,7 @@ require_once('../helpers/user-functions.php');
 $email = $_SESSION['email'];
 
 //USER avatar
-if ($_FILES[$input_name]['error'] == UPLOAD_ERR_OK) {
+if ($_FILES['load-avatar']['error'] == UPLOAD_ERR_OK) {
   $main_image_new_id = uniqid();
   $server_image_name = save_image_server('load-avatar', $main_image_new_id, "../images/profile_images/" . get_current_user_email() . "/");
   save_image_db($site_url, "images/profile_images/" . get_current_user_email() . "/" . $server_image_name, $db);
@@ -39,7 +39,7 @@ $description = trim($_POST['description']);
 $adress = trim($_POST['direction']);
 
 // Assign values to User's attributes
-$user->setName($name);
+$user->setName($email);
 $user->setLastName($lastName);
 $user->setPhone($phone);
 $user->setOcupation($ocupation);
@@ -60,16 +60,7 @@ $user->setAdress($adress);
 // $stmt->bindValue(':adress', $adress,PDO::PARAM_STR);
 // $stmt->execute();
 
-$colName = ['name', 'lastName', 'phone', 'ocupation', 'description', 'adress'];
-
-$value = [$user->getName($name), $user->getLastName($lastName), $user->getPhone($phone), $user->getOcupation($ocupation), $user->getDescription($description), $user->getAdress($adress)];
-
-for($i = 0; $i< count($colName); $i++) {
-  if(!empty($_POST[$colName[$i]])) {
-    $user->updateValueDb($colName[$i], $value[$i], $db);
-  }
-}
-
+$user->updateValueDb('lastName', $user->getLastName($lastName), $db);
 
 // BRING user by EMAIL FROM DB
 $stmt = $db->prepare("SELECT * FROM user WHERE email LIKE :email");
@@ -79,7 +70,4 @@ $userRow = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 //var_dump($userRow);
 
-//header("Location: ../user-edit.php");
-
-echo "VAR DUMP POST<br>";
-var_dump($_POST);
+header("Location: ../user-edit.php");
