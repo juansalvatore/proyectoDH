@@ -94,7 +94,7 @@ class User {
     $user_avatar = $stmt->fetch(PDO::FETCH_ASSOC);
 
     //Assing a default if avatar col is empty
-    if (is_null($user_avatar["avatar"])) {
+    if (empty($user_avatar["avatar"])) {
       $built_url = $site_url . "images/default-user.png";
     } else {
       $built_url = $user_avatar["avatar"];
