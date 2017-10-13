@@ -3,7 +3,7 @@
   require_once('helpers/user-functions.php');
   require_once('inc/conn.php');
   require_once('inc/config.php');
-  require_once('classes/user.php');
+  require_once('classes/User.php');
 
   $user = new User()
 ?>
