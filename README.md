@@ -7,9 +7,9 @@ Final project from Digital House's Full Stack course
 See the project here: http://boole-app.herokuapp.com/
 
 
-<img src="https://ibb.co/hnpffR" style="width: 200px" />
+<img src="https://image.ibb.co/m99P76/mockup_ipad.png" alt="mockup_ipad" border="0">
 
-<img src="https://ibb.co/kEJj76" />
+<img src="https://image.ibb.co/ivPP76/mockup_macbook_Air.png" alt="mockup_macbook_Air" border="0">
 
 
 <h4>To clone the repository:</h4>
