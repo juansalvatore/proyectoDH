@@ -7,6 +7,11 @@ Final project from Digital House's Full Stack course
 See the project here: http://boole-app.herokuapp.com/
 
 
+<img src="https://ibb.co/hnpffR" style="width: 200px" />
+
+<img src="https://ibb.co/kEJj76" />
+
+
 <h4>To clone the repository:</h4>
 <ul>
   <li>First clone the branch boolLaravel</li>
