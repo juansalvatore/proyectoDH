@@ -1,10 +1,9 @@
 
-<img src="http://revistawatt.com/wp-content/uploads/img/116/dh/logo-digitalhouse.png" />
 
-# Digital House's Final Project "Boole"
+# Digital House's Final Project "We-Project"
 Final project from Digital House's Full Stack course
 (Last version in branch: boolLaravel).
-See the project here: http://boole-app.herokuapp.com/
+See the project here: http://we-project.herokuapp.com/
 
 
 <img src="https://image.ibb.co/ivPP76/mockup_macbook_Air.png" style="margin-left: 200px" alt="mockup_macbook_Air" border="0">
